@@ -60,7 +60,7 @@ class ChangellyPy:
 
         self._headers['sign'] = hmac.new(self._secret, data.encode('utf-8'), hashlib.sha512).hexdigest()
 
-        response = req.post(API_URL, headers=self._headers, data=data)
+        response = req.post(API_URL, headers=self._headers, data=data, timeout=60)
 
         if response.ok:
             return response.json().get('result')
